@@ -40,8 +40,28 @@ const ProductOverview = () => {
     }
   ];
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  };
+
   return (
-    <section ref={sectionRef} className="py-20 bg-white">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-white via-gray-50/30 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className={`text-3xl md:text-4xl font-bold text-qari-primary mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
@@ -56,17 +76,25 @@ const ProductOverview = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`text-center p-8 rounded-2xl bg-gray-50 hover:bg-qari-secondary/5 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg ${
+              className={`bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 hover:shadow-xl ${
                 isVisible ? `animate-scale-in animate-stagger-${index + 2}` : 'opacity-0'
               }`}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ transformStyle: 'preserve-3d' }}
             >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-qari-primary mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600">
-                {feature.description}
-              </p>
+              <div className="text-center">
+                <div className="text-4xl mb-6 bg-qari-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                  {feature.icon}
+                </div>
+                
+                <h3 className="text-xl font-semibold text-qari-primary mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

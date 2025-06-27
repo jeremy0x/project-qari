@@ -71,7 +71,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" ref={sectionRef} className="py-20 bg-qari-gray">
+    <section id="services" ref={sectionRef} className="py-20 bg-gradient-to-br from-qari-gray via-gray-50/50 to-qari-gray">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className={`text-3xl md:text-4xl font-bold text-qari-primary mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
@@ -79,11 +79,11 @@ const ServicesSection = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto lg:[&>*:nth-child(4)]:col-start-1 lg:[&>*:nth-child(4)]:col-end-2 lg:[&>*:nth-child(5)]:col-start-3 lg:[&>*:nth-child(5)]:col-end-4 lg:[&>*:nth-child(4)]:mx-auto lg:[&>*:nth-child(5)]:mx-auto">
+        <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 cursor-pointer ${
+              className={`bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 hover:shadow-xl w-full sm:w-80 ${
                 isVisible ? `animate-scale-in animate-stagger-${index + 1}` : 'opacity-0'
               }`}
               onMouseMove={handleMouseMove}

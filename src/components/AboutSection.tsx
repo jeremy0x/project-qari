@@ -26,13 +26,7 @@ const AboutSection = () => {
     <section 
       id="about" 
       ref={sectionRef}
-      className="py-20 relative overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(rgba(12, 20, 33, 0.9), rgba(12, 20, 33, 0.8)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=1080&fit=crop')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
+      className="py-20 bg-qari-primary"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -55,9 +49,11 @@ const AboutSection = () => {
               href="https://forms.gle/zSEeMomP4jhNCaGC8"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-qari-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              className="group relative bg-gradient-to-r from-qari-secondary to-qari-secondary/90 text-white px-10 py-4 rounded-full font-semibold overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
             >
-              Join Our Mission
+              <span className="relative z-10">Join Our Mission</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-qari-secondary/90 to-qari-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-qari-secondary to-qari-secondary/90 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
             </a>
           </div>
         </div>
