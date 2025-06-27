@@ -26,34 +26,49 @@ const ServicesSection = () => {
     {
       icon: "🚘",
       title: "Premium Ride-Hailing",
-      description: "Instant, clean, and secure rides",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=720&h=280&fit=crop"
+      description: "Instant, clean, and secure rides"
     },
     {
       icon: "🎁",
       title: "Rider Rewards",
-      description: "Earn exclusive rewards on every ride",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=720&h=280&fit=crop"
+      description: "Earn exclusive rewards on every ride"
     },
     {
       icon: "💸",
       title: "Low Driver Commission",
-      description: "More earnings for our driver partners",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=720&h=280&fit=crop"
+      description: "More earnings for our driver partners"
     },
     {
       icon: "🔒",
       title: "Fixed Transparent Pricing",
-      description: "No surge pricing, no hidden fees",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=720&h=280&fit=crop"
+      description: "No surge pricing, no hidden fees"
     },
     {
       icon: "📱",
       title: "Active WhatsApp Support",
-      description: "Dedicated support groups for drivers",
-      image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=720&h=280&fit=crop"
+      description: "Dedicated support groups for drivers"
     }
   ];
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  };
 
   return (
     <section id="services" ref={sectionRef} className="py-20 bg-qari-gray">
@@ -68,24 +83,19 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ${
+              className={`bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 cursor-pointer ${
                 isVisible ? `animate-scale-in animate-stagger-${index + 1}` : 'opacity-0'
               }`}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ transformStyle: 'preserve-3d' }}
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-qari-primary/20"></div>
-                <div className="absolute top-4 left-4 text-2xl bg-white/90 w-12 h-12 rounded-full flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-4xl mb-6 bg-qari-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                   {service.icon}
                 </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-qari-primary mb-3">
+                
+                <h3 className="text-xl font-semibold text-qari-primary mb-4">
                   {service.title}
                 </h3>
                 <p className="text-gray-600">
