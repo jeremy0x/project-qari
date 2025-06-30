@@ -1,7 +1,14 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "qari-ride-hailing",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Qari - Move Better | Premium Ride-Hailing Platform. Clean vehicles, fair pricing, and better driver treatment.",
+  "author": "Qari <info@qariworld.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremy0x/project-qari.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

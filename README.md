@@ -1,73 +1,91 @@
-# Welcome to your Lovable project
+# Qari – Move Better | Premium Ride-Hailing Platform
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/d7e3a89a-27f5-4596-ad1f-a2dc52c2c649
+Qari is a premium ride-hailing platform designed for clean vehicles, fair pricing, and better driver treatment. Built with a modern tech stack, Qari aims to provide a smarter, more ethical alternative to traditional ride-hailing apps.
 
-## How can I edit this code?
+- **Live Demo:** [Qari Waitlist](https://forms.gle/zSEeMomP4jhNCaGC8)
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- Clean, comfortable vehicles and professional drivers
+- No surge pricing, transparent and fair costs
+- Fast pickup times and reliable service
+- Rider rewards and premium experience
+- Low commission for drivers and better pay
+- Active WhatsApp support for drivers
+- Contact form and waitlist for early access
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d7e3a89a-27f5-4596-ad1f-a2dc52c2c649) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- [Lovable](https://lovable.dev/) (AI-driven design system)
+- [Vite](https://vitejs.dev/) (React + TypeScript)
+- [Tailwind CSS](https://tailwindcss.com/) (with custom theme)
+- [shadcn/ui](https://ui.shadcn.com/) (UI components)
+- [Framer Motion](https://www.framer.com/motion/) (animations)
+- [React Router](https://reactrouter.com/) (routing)
+- [React Query](https://tanstack.com/query/latest) (data fetching)
+- [Lucide Icons](https://lucide.dev/) (icons)
 
-**Use your preferred IDE**
+## Folder Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```plainText
+project-qari/
+├── public/                # Static assets (images, favicon, robots.txt)
+├── src/
+│   ├── components/        # UI and page sections (Hero, About, Services, etc.)
+│   ├── hooks/             # Custom React hooks
+│   ├── lib/               # Utility functions
+│   ├── pages/             # Main pages (Index, NotFound)
+│   ├── App.tsx            # App entry (routing, providers)
+│   └── main.tsx           # Vite entry point
+├── index.html             # HTML template (meta tags, favicon)
+├── tailwind.config.ts     # Tailwind CSS config (custom colors, fonts)
+├── vite.config.ts         # Vite config (aliases, plugins)
+├── package.json           # Project metadata and scripts
+└── README.md              # Project documentation
 ```
 
-**Edit a file directly in GitHub**
+## Setup & Development
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Clone the repository:**
 
-**Use GitHub Codespaces**
+   ```sh
+   git clone <https://github.com/jeremy0x/project-qari.git>
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+   cd project-qari
+   ```
 
-## What technologies are used for this project?
+2. **Install dependencies:**
 
-This project is built with:
+   ```sh
+   npm install
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. **Start the development server:**
 
-## How can I deploy this project?
+   ```sh
+   npm run dev
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/d7e3a89a-27f5-4596-ad1f-a2dc52c2c649) and click on Share -> Publish.
+   The app will be available at [http://localhost:8080](http://localhost:8080) by default.
 
-## Can I connect a custom domain to my Lovable project?
+## Main Scripts
 
-Yes, you can!
+- `npm run dev` – Start development server
+- `npm run build` – Build for production
+- `npm run preview` – Preview production build
+- `npm run lint` – Lint codebase
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Customization
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- **Branding:** Update images in `public/` (e.g., `qari-logo.png`, `qari-car-transparent.png`)
+- **Theme:** Edit `tailwind.config.ts` for colors, fonts, and animations
+- **Meta tags:** Edit `index.html` for SEO and social sharing
+
+## Contact & Support
+
+- **Email:** [info@qariworld.com](mailto:info@qariworld.com)
+- **Phone:** +234 707 245 4198
+- **Address:** V8 Valley, Plot 8, The Providence Street, Lekki Phase 1, Lagos
+- **Waitlist:** [Join here](https://forms.gle/zSEeMomP4jhNCaGC8)
