@@ -1,10 +1,10 @@
 # Qari – Move Better | Premium Ride-Hailing Platform
 
-## Project Overview
-
 Qari is a premium ride-hailing platform designed for clean vehicles, fair pricing, and better driver treatment. Built with a modern tech stack, Qari aims to provide a smarter, more ethical alternative to traditional ride-hailing apps.
 
-- **Live Demo:** [Qari Waitlist](https://forms.gle/zSEeMomP4jhNCaGC8)
+This repository contains the frontend code for the waitlist landing page, showcasing the brand and features of Qari. The app is built with React, TypeScript, and Tailwind CSS, leveraging modern libraries for a smooth user experience.s
+
+- **View live:** [qariworld.com](https://www.qariworld.com)
 
 ## Features
 
