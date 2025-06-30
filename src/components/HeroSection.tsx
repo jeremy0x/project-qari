@@ -26,7 +26,7 @@ const HeroSection = () => {
         <div className="absolute bottom-[-60px] right-[-60px] w-60 h-60 bg-qari-secondary/15 blur-2xl rounded-full animate-blob4 z-0" />
       </div>
 
-      <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center pt-24 pb-8 z-10">
+      <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center pt-24 max-lg:pb-8 z-10">
         <motion.h1
           className="text-4xl md:text-6xl font-extrabold text-qari-primary mb-6 leading-tight"
           initial={{ opacity: 0, filter: "blur(16px)", y: 32 }}
@@ -112,7 +112,7 @@ const HeroSection = () => {
         />
         {/* Secondary Color Glow/Shadow under car */}
         <motion.div
-          className="absolute left-0 -translate-x-1/2 bottom-14 w-full h-8 md:h-12 rounded-full bg-qari-secondary/50 blur-2xl z-[-1]"
+          className="absolute left-0 -translate-x-1/2 bottom-24 w-full h-8 md:h-12 rounded-full bg-qari-secondary/50 blur-2xl z-[-1]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 1.2, ease: "easeOut" }}
