@@ -1,6 +1,8 @@
-
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,58 +12,122 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-2 animate-blur-reveal">
-            <div className="text-2xl font-bold text-qari-primary">Qari</div>
-            <div className="text-xs font-medium text-qari-secondary tracking-wider">MOVE BETTER</div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-5xl">
+      <motion.div
+        initial={{ opacity: 0, y: -24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="relative rounded-2xl border border-gray-200 bg-white/60 backdrop-blur-md shadow-lg px-6 py-2 flex items-center font-dm"
+      >
+        {/* Logo */}
+        <div className="flex items-center space-x-2 z-10">
+          <a href="#home" className="flex items-center gap-2 select-none">
+            <img src="/qari-logo.png" alt="Qari Logo" className="h-8 w-auto" />
+          </a>
+        </div>
+        {/* Centered Nav */}
+        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-6 font-medium text-base text-gray-800 z-0">
+          <motion.button
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.2 }}
+            onClick={() => scrollToSection("home")}
+            className="hover:text-qari-primary transition-colors"
+          >
+            Home
+          </motion.button>
+          <motion.button
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.3 }}
+            onClick={() => scrollToSection("about")}
+            className="hover:text-qari-primary transition-colors"
+          >
+            About
+          </motion.button>
+          <motion.button
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.4 }}
+            onClick={() => scrollToSection("services")}
+            className="hover:text-qari-primary transition-colors"
+          >
+            Services
+          </motion.button>
+          <motion.button
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.5 }}
+            onClick={() => scrollToSection("contact")}
+            className="hover:text-qari-primary transition-colors"
+          >
+            Contact
+          </motion.button>
+        </nav>
+        {/* CTA Button */}
+        <motion.div
+          className="hidden md:flex items-center ml-auto z-10"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.65 }}
+        >
+          <a
+            href="https://forms.gle/zSEeMomP4jhNCaGC8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="glass" rightIcon={<ArrowRight size={18} />}>
+              Join Waitlist
+            </Button>
+          </a>
+        </motion.div>
+        {/* Mobile Menu Button */}
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden px-3 py-2 ml-auto"
+          size="sm"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </Button>
+      </motion.div>
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden absolute left-0 right-0 mt-2 rounded-2xl border border-gray-200 bg-white/90 backdrop-blur-md shadow-lg px-6 py-4">
+          <nav className="flex flex-col font-medium text-base text-gray-800">
             <button
-              onClick={() => scrollToSection('home')}
-              className="text-qari-primary hover:text-qari-secondary transition-colors duration-300 font-medium"
+              onClick={() => scrollToSection("home")}
+              className="py-2 text-left hover:text-qari-primary transition-colors"
             >
               Home
             </button>
             <button
-              onClick={() => scrollToSection('about')}
-              className="text-qari-primary hover:text-qari-secondary transition-colors duration-300 font-medium"
+              onClick={() => scrollToSection("about")}
+              className="py-2 text-left hover:text-qari-primary transition-colors"
             >
               About
             </button>
             <button
-              onClick={() => scrollToSection('services')}
-              className="text-qari-primary hover:text-qari-secondary transition-colors duration-300 font-medium"
+              onClick={() => scrollToSection("services")}
+              className="py-2 text-left hover:text-qari-primary transition-colors"
             >
               Services
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
-              className="text-qari-primary hover:text-qari-secondary transition-colors duration-300 font-medium"
+              onClick={() => scrollToSection("contact")}
+              className="py-2 text-left hover:text-qari-primary transition-colors"
             >
               Contact
             </button>
@@ -69,64 +135,20 @@ const Header = () => {
               href="https://forms.gle/zSEeMomP4jhNCaGC8"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-qari-secondary text-white px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300"
+              onClick={() => setIsOpen(false)}
             >
-              Join Waitlist
+              <Button
+                variant="glass"
+                rightIcon={<ArrowRight size={18} />}
+                className="mt-2 w-full"
+                size="lg"
+              >
+                Join Waitlist
+              </Button>
             </a>
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-qari-primary hover:text-qari-secondary transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t animate-fade-in-up">
-            <nav className="flex flex-col py-4">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="px-4 py-3 text-left text-qari-primary hover:bg-gray-50 hover:text-qari-secondary transition-colors"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="px-4 py-3 text-left text-qari-primary hover:bg-gray-50 hover:text-qari-secondary transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="px-4 py-3 text-left text-qari-primary hover:bg-gray-50 hover:text-qari-secondary transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-4 py-3 text-left text-qari-primary hover:bg-gray-50 hover:text-qari-secondary transition-colors"
-              >
-                Contact
-              </button>
-              <div className="px-4 py-3">
-                <a
-                  href="https://forms.gle/zSEeMomP4jhNCaGC8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block bg-qari-secondary text-white px-6 py-2 rounded-full font-medium text-center hover:bg-opacity-90 transition-all duration-300"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Join Waitlist
-                </a>
-              </div>
-            </nav>
-          </div>
-        )}
-      </div>
+      )}
     </header>
   );
 };

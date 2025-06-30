@@ -1,64 +1,76 @@
-
-import { useState, useEffect, useRef } from 'react';
+import { motion } from "framer-motion";
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 
 const AboutSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section 
-      id="about" 
-      ref={sectionRef}
-      className="py-20 bg-qari-primary"
+    <motion.section
+      id="about"
+      initial={{ opacity: 0, filter: "blur(16px)", y: 64 }}
+      whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      className="py-20 bg-gradient-to-b from-qari-primary via-[#1a1a2e] to-qari-primary"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold text-white mb-8 ${isVisible ? 'animate-blur-reveal' : 'opacity-0'}`}>
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-white mb-8"
+            initial={{ opacity: 0, filter: "blur(16px)", y: 32 }}
+            whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
+          >
             Moving Forward, Moving Better
-          </h2>
-          
-          <div className={`text-lg md:text-xl text-white/90 leading-relaxed space-y-6 ${isVisible ? 'animate-blur-reveal animate-stagger-1' : 'opacity-0'}`}>
-            <p>
-              At Qari, we believe moving around should feel better — not stressful, unsafe, or overpriced. We're solving the frustrations of traditional ride-hailing apps by offering fast pickup, clean vehicles, and better pay for drivers.
-            </p>
-            
-            <p>
-              With our rider rewards, no high surge pricing, and a focus on premium service, Qari is designed for a new generation of smart urban movers.
-            </p>
-          </div>
+          </motion.h2>
 
-          <div className={`mt-12 ${isVisible ? 'animate-scale-in animate-stagger-2' : 'opacity-0'}`}>
+          <motion.div
+            className="text-sm md:text-base text-white/90 leading-relaxed space-y-6"
+            initial={{ opacity: 0, filter: "blur(16px)", y: 32 }}
+            whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.75, delay: 0.2, ease: "easeOut" }}
+          >
+            <p>
+              At Qari, we believe moving around should feel better — not
+              stressful, unsafe, or overpriced. We're solving the frustrations
+              of traditional ride-hailing apps by offering fast pickup, clean
+              vehicles, and better pay for drivers.
+            </p>
+
+            <p>
+              With our rider rewards, no high surge pricing, and a focus on
+              premium service, Qari is designed for a new generation of smart
+              urban movers.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="mt-12 w-fit mx-auto"
+            initial={{ opacity: 0, filter: "blur(16px)", y: 32 }}
+            whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.75, delay: 0.3, ease: "easeOut" }}
+          >
             <a
               href="https://forms.gle/zSEeMomP4jhNCaGC8"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-gradient-to-r from-qari-secondary to-qari-secondary/90 text-white px-10 py-4 rounded-full font-semibold overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
+              className="max-w-fit mx-auto"
             >
-              <span className="relative z-10">Join Our Mission</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-qari-secondary/90 to-qari-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-qari-secondary to-qari-secondary/90 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+              <Button
+                size="lg"
+                variant="glass"
+                rightIcon={<ArrowRight size={18} />}
+                className="mx-auto w-fit"
+              >
+                Join Our Mission
+              </Button>
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
